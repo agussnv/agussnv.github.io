@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portobello segunda pantalla</title>
+</head>
+<body>
+    <style>
+        #videoPlayer{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <video id="videoPlayer" muted autoplay>
+        <source src="storage/video1.mp4" type="video/mp4">
+    </video>
+
+    <script>
+        const videos = [
+            'storage/video1.mp4',
+            'storage/video2.mp4',
+            'storage/video3.mp4',
+            'storage/video4.mp4',
+            'storage/video5.mp4',
+            'storage/video6.mp4',
+            'storage/video7.mp4'
+        ];
+
+        let currentVideo = 0;
+        videoPlayer = document.getElementById('videoPlayer');
+        videoPlayer.onended = function() {
+            currentVideo = (currentVideo + 1) % videos.length;
+            videoPlayer.src = videos[currentVideo];
+            videoPlayer.play();
+        }
+
+        videoPlayer.src = videos[currentVideo];
+        videoPlayer.play();
+    </script>
+</body>
+</html>
